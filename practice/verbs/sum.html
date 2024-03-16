@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="sum.css" />
+    <script defer src="sum.js"></script>
+    <title>sum Practice</title>
+  </head>
+  <body>
+    <h1><a href="../../index.html">sum</a></h1>
+    <div class="container">
+      <p style="text-align: center">
+        <span id="person">First</span> Person <span id="number">Singular</span>,
+        <span id="tense">Present</span> <span id="voice">Active</span>
+        <span id="mood">Indicative</span>:
+      </p>
+      <br />
+      <form action="#" method="post" id="wordForm">
+        <input
+          type="text"
+          id="wordInput"
+          name="word"
+          placeholder="Enter the conjugation..."
+          autocomplete="off"
+          required
+        />
+        <button type="submit">Check</button>
+      </form>
+      <br />
+      <p style="text-align: center">
+        Amount Correct: <span id="correct">0</span>
+      </p>
+    </div>
+  </body>
+</html>

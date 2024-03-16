@@ -36,6 +36,9 @@ h1 {
   width: 800px;
 }
 
+.main ul {
+  padding-left: 30px;
+}
 /* Styling the main heading */
 .main h1 {
   color: #333; /* Setting the color to a dark shade */

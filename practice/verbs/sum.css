@@ -1,0 +1,60 @@
+/* Resetting default margin and padding for all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Setting up basic styling for the body */
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; /* Choosing a commonly available font */
+  background-color: #f0f0f0; /* Setting a light background color */
+}
+
+/* Styling the header */
+h1 {
+  margin-top: 20px; /* Adding some space above the heading */
+  text-align: center; /* Centering the text */
+  margin-bottom: 20px; /* Adding some space below the heading */
+  color: #333; /* Setting the color to a dark shade */
+}
+
+/* Styling the container */
+.container {
+  max-width: 400px; /* Limiting the maximum width of the container */
+  margin: 0 auto; /* Centering the container horizontally */
+  padding: 20px; /* Adding some padding */
+  background-color: #fff; /* Setting a white background */
+  border-radius: 8px; /* Adding rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow */
+}
+
+/* Styling the form */
+form {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack elements vertically */
+}
+
+/* Styling text input */
+input[type="text"] {
+  padding: 10px; /* Adding padding */
+  margin-bottom: 20px; /* Adding some space below the input */
+  border: 1px solid #ccc; /* Adding a border */
+  border-radius: 4px; /* Adding rounded corners */
+  font-size: 16px; /* Setting font size */
+}
+
+/* Styling the submit button */
+button[type="submit"] {
+  padding: 10px; /* Adding padding */
+  background-color: #333; /* Setting the background color */
+  color: #fff; /* Setting the text color */
+  border: none; /* Removing border */
+  border-radius: 4px; /* Adding rounded corners */
+  cursor: pointer; /* Adding a pointer cursor */
+  font-size: 16px; /* Setting font size */
+}
+
+button[type="submit"]:hover {
+  background-color: #555; /* Darkening the background color on hover */
+}
