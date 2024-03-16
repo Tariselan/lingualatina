@@ -1,21 +1,49 @@
+/* Resetting default margin and padding for all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Setting up basic styling for the body */
 body {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; /* Choosing a commonly available font */
+  background-color: #f0f0f0; /* Setting a light background color */
 }
 
+/* Styling the header */
 h1 {
-    text-align: center;
-    display: absolute !important; 
-    top: -100px !important;
+  margin-top: 20px; /* Adding some space above the heading */
+  text-align: center; /* Centering the text */
+  margin-bottom: 20px; /* Adding some space below the heading */
+  color: #333; /* Setting the color to a dark shade */
 }
 
+/* Styling the container */
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  max-width: 800px; /* Limiting the maximum width of the container */
+  margin: 0 auto; /* Centering the container horizontally */
+  padding: 20px; /* Adding some padding */
+}
+
+/* Styling the main section */
+.main {
+  background-color: #fff; /* Setting a white background */
+  padding: 20px; /* Adding some padding */
+  border-radius: 8px; /* Adding rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow */
+  margin-bottom: 20px; /* Adding some space below each main section */
+  width: 800px;
+}
+
+/* Styling the main heading */
+.main h1 {
+  color: #333; /* Setting the color to a dark shade */
+  margin-bottom: 10px; /* Adding some space below the heading */
+}
+
+/* Styling the paragraph */
+p {
+  color: #666; /* Setting the color to a slightly darker shade */
+  line-height: 1.5; /* Setting the line height for better readability */
 }
