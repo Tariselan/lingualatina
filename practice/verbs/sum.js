@@ -24,54 +24,56 @@ function retrieveTense(mood, tense) {
     return mood[tense];
 };
 function retrievePerson(tense, person) {
-    return tense[person];
-};
+    console.log("Inside retrievePerson function");
+    console.log("Tense:", tense);
+    console.log("Person index:", person);
+    
+    // Ensure tense is defined and person index is within the valid range
+    if (tense && person >= 0 && person < tense.length) {
+        console.log("Person index within range, returning:", tense[person]);
+        return tense[person];
+    } else {
+        console.log("Error: Undefined tense or invalid person index");
+        return ''; // Return an empty string or handle the error appropriately
+    }
+}
 function randomInt(n) {
     return Math.round(Math.random()*n)
 };
 function chooseConj() {
     let moodIndex, tenseIndex, person;
+
     moodIndex = randomInt(1); // Mood index 0 for indicative, 1 for subjunctive
     const mood = retrieveMood(moodIndex);
-    
+
     // Determine the maximum index based on the mood
     const maxTenseIndex = moodIndex ? 3 : 5;
     
-    // Select tense index based on mood
-    tenseIndex = randomInt(maxTenseIndex); 
-
-    // Calculate the person index based on the mode and current tense
+    // If in inOrderMode, calculate person, tense, and mood based on the count
     if (inOrderMode) {
-        // Calculate the person index based on the count and current tense index
-        person = (chooseConj.count || 0) % 6;
-        
-        // If all persons are covered, reset the count and move to the next tense
-        if (chooseConj.count !== undefined && chooseConj.count % 6 === 0) {
-            chooseConj.tenseCount = (chooseConj.tenseCount || 0) + 1;
-            chooseConj.count = 0;
-        }
-        
-        // If all tenses are covered, reset the tense count and move to the next mood
-        if (chooseConj.tenseCount !== undefined && chooseConj.tenseCount >= maxTenseIndex) {
-            chooseConj.tenseCount = 0;
-            chooseConj.moodCount = (chooseConj.moodCount || 0) + 1;
-        }
+        const tenseCount = Math.floor(chooseConj.count / (6 * 3)); // Calculate tense count
+        const personIndex = (chooseConj.count / 6) % 3; // Calculate person index
+        person = personIndex;
+        tenseIndex = tenseCount % maxTenseIndex; // Calculate tense index
     } else {
-        person = randomInt(5); // Randomly select person index
+        // If not in inOrderMode, randomly select person and tense
+        person = randomInt(3); // Randomly select person index
+        tenseIndex = randomInt(maxTenseIndex); // Select tense index based on mood
     }
-    
-    if (inOrderMode) {
+
+    // If all moods are covered, reset the mood count
+    if (chooseConj.count !== undefined && chooseConj.count >= (6 * 3 * 2)) {
+        chooseConj.count = 0;
+    } else {
         chooseConj.count = (chooseConj.count || 0) + 1;
     }
-    
-    // If all moods are covered, reset the mood count
-    if (chooseConj.moodCount !== undefined && chooseConj.moodCount >= 2) {
-        chooseConj.moodCount = 0;
-    }
-    console.log(correctWord)
+
+    // Calculate the correct word based on the selected person, tense, and mood
     correctWord = retrievePerson(retrieveTense(mood, tenseIndex), person);
+
     return [moodIndex, tenseIndex, person];
 }
+
 
 function toggleMode() {
     inOrderMode = !inOrderMode;
@@ -98,6 +100,8 @@ function editFormText() {
 }
 document.addEventListener('DOMContentLoaded', function() {
     editFormText();
+
+    console.log(correctWord)
 });
 document.body.addEventListener('keydown', function(event) {
     if (event.key == '`') {
@@ -113,5 +117,6 @@ document.getElementById('wordForm').addEventListener('submit', function(event) {
     // Prevent the default form submission behavior (reloading the page)
     event.preventDefault();
     editFormText();
+    chooseConj.count = 0;
     document.getElementById('wordInput').value = '';    // Here you can perform any other actions you want, such as validation, sending data to a server, etc.
 });
